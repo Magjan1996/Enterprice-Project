@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsf="http://java.sun.com/jsp/jstl/core">
+
+<f:view>
+    <h:head>
+        <title>
+            Login
+        </title>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <!-- Main Form -->
+        <h:form styleClass="form">
+
+            <!-- Notification growl component. ID = 'growl' -->
+            <p:growl id="growl" life="2000" />
+
+            <!-- Authorization panel -->
+            <p:panel header="Авторизация" styleClass="panel">
+
+                <!-- Center alignment component -->
+                <center>
+
+                    <!--
+                    Username inputText component.
+                    value = LoginControl.getLogin();
+                    type = default (text) -->
+                    <p:inputText value="#{loginControl.login}" placeholder="Логин" styleClass="loginInputText"/>
+
+                    <!--
+                    Password inputText component.
+                    value = LoginControl.getLogin();
+                    type = password -->
+                    <p:inputText type="password" value="#{loginControl.pass}" placeholder="Пароль" styleClass="loginInputText"/>
+
+                    <!--
+                    Sign button component.
+                    action = LoginControl.signClick();
+                    update component when Clicked = {id: = growl}
+                    type = password -->
+                    <p:commandButton value="Войти" action="#{loginControl.signClick}" update="growl" styleClass="actionButton"/>
+
+                </center>
+            </p:panel>
+        </h:form>
+
+    </h:body>
+</f:view>
+</html>

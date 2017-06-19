@@ -1,0 +1,89 @@
+body{
+  background-color: beige;
+}
+.form{
+    font-size: 16px;
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    margin-top: 200px;
+}
+.add_view{
+    position: fixed;
+    width: 50%;
+    left: -100%;
+    background-color: red;
+    height: 400px;
+    top: 20%;
+}
+.loginInputText{
+    width: 250px;
+}
+.actionButton{
+    width: 260px;
+}
+.list-dataTable{
+    width: 70%;
+    height: 100%;
+    margin: auto;
+}
+.footer{
+    width: 70%;
+    position: fixed;
+    left: 15%;
+    bottom: 0;
+    height:50px;
+    background-color: beige;
+}
+@media screen and (max-width: 720px){
+    body{
+        padding: 0;
+        margin:0;
+    }
+    .list-dataTable{
+        width: 99%;
+        margin: auto;
+    }
+    .form{
+        padding: 0;
+        margin:auto;
+        border: none;
+        border-radius: 0px;
+        background-color: #ffffff;
+        width: 99%;
+        font-size: 25px;
+        height: 200px;
+    }
+    .panel{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    .loginInputText{
+        width: 98%;
+    }
+    .actionButton{
+        margin-top: 16px;
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 1280px) and (min-width: 720px){
+    .form{
+        width: 70%;
+        height: 400px;
+        font-size: 40px;
+    }
+    .loginInputText{
+        width: 98%;
+    }
+    .list-dataTable{
+        width: 90%;
+        margin: auto;
+    }
+    .actionButton{
+        margin-top: 16px;
+        width: 100%;
+    }
+}

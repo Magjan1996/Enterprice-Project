@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+   <title>
+      Welcom Page
+   </title>
+   <link rel="stylesheet" type="text/css" href="css/main.css"/>
+   <script type="text/javascript">
+      function login(val) {
+
+      }
+   </script>
+</h:head>
+
+<h:body>
+   <!-- Main Form -->
+   <h:form id="main-form">
+
+      <!-- DataTabel in WelcomScreen Page -->
+      <p:dataTable value="#{studentsControls.allStudentsController.list}" var="o" id="dataTableS">
+         <p:growl for="dataTableS" id="growl" life="2000" />
+
+         <p:column style="width: 25px;">
+            <f:facet name="header">ID</f:facet>
+            <center>
+               <p:outputLabel value="#{o.id}"/>
+            </center>
+         </p:column>
+
+         <p:column>
+            <f:facet name="header">Ф.И.О</f:facet>
+            <center>
+               <p:outputLabel value="#{o.fullname}"/>
+            </center>
+         </p:column>
+
+         <p:column>
+            <f:facet name="header">Факультет</f:facet>
+            <center>
+               <p:outputLabel value="#{o.faculty}"/>
+            </center>
+         </p:column>
+
+         <p:column style="width: 85px;">
+            <f:facet name=""/>
+            <p:commandButton
+                    icon="ui-icon-close"
+                    value="Удалить"
+                    style="font-size: 12px;"
+                    action="#{studentsControls.deleteStudents.delete(o.id)}"
+                    update="main-form"/>
+         </p:column>
+
+      </p:dataTable>
+
+      <!-- AccordionPanel. Quantity tabs = 2. -->
+      <p:accordionPanel activeIndex="-1">
+
+         <p:tab title="Добавить Студента">
+            <p:panel>
+               <center>
+                  <p:panel style="width: 500px; margin-top: 25px;" header="Регистрация">
+                    <p:inputText value="#{studentsControls.addStudentController.name}" style="width: 420px;" placeholder="Имя"/>
+
+                    <p:inputText value="#{studentsControls.addStudentController.surname}" style="width: 420px; margin-top: 25px;" placeholder="Фамилия"/>
+
+                     <p:inputText value="#{studentsControls.addStudentController.fathername}" style="width: 420px; margin-top: 25px;" placeholder="Отчество"/>
+
+                     <p:inputText value="#{studentsControls.addStudentController.faculty}" style="width: 420px; margin-top: 25px;" placeholder="Факультет"/>
+                  </p:panel>
+                  <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                  <p:commandButton style="width: 500px; margin-top: 5px;"
+                                   value="Создать"
+                                   update="main-form"
+                                   actionListener="#{studentsControls.addStudentController.addStudent}"/>
+               </center>
+            </p:panel>
+         </p:tab>
+
+         <p:tab title="Редактировать">
+            <p:dataTable value="#{studentsControls.editStudents.all}" var="o">
+
+               <p:column style="width: 25px;">
+                  <f:facet name="header">ID</f:facet>
+                  <center>
+                     <p:outputLabel value="#{o.id}"/>
+                  </center>
+               </p:column>
+
+               <p:column>
+                  <f:facet name="header">Фамилия</f:facet>
+                  <center>
+                     <p:inputText value="#{o.surname}"/>
+                  </center>
+               </p:column>
+
+               <p:column>
+                  <f:facet name="header">Имя</f:facet>
+                  <center>
+                     <p:inputText value="#{o.name}"/>
+                  </center>
+               </p:column>
+
+               <p:column>
+                  <f:facet name="header">Отчество</f:facet>
+                  <center>
+                     <p:inputText value="#{o.fathername}"/>
+                  </center>
+               </p:column>
+
+               <p:column>
+                  <f:facet name="header">Факультет</f:facet>
+                  <center>
+                     <p:inputText value="#{o.faculty}"/>
+                  </center>
+               </p:column>
+
+               <p:column style="width: 125px;">
+                  <f:facet name=""/>
+                  <p:commandButton
+                          icon="ui-icon-edit"
+                          value="Редактировать"
+                          style="font-size: 12px;"
+                          action="#{studentsControls.editStudents.edit(
+                                    o.id,
+                                    o.name,
+                                    o.surname,
+                                    o.fathername,
+                                    o.faculty
+                          )}"
+                          update="main-form"/>
+               </p:column>
+
+            </p:dataTable>
+         </p:tab>
+
+      </p:accordionPanel>
+
+   </h:form>
+
+</h:body>
+</html>
